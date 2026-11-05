@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wesley Bowen | Video Producer & Cinematographer</title>
+<meta name="description" content="Video producer, cinematographer and colorist with 10+ years of experience across commercial, educational and corporate work.">
+<style>
+:root{--bg:#0b0f12;--surface:#121a1f;--line:#1f2d34;--text:#f4f8f9;--muted:#9bb0b8;--teal:#14d4c4;--teal-dim:#0e8f86}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(11,15,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-weight:700;letter-spacing:.08em;font-size:.95rem}
+.logo span{color:var(--teal)}
+nav ul{display:flex;gap:24px;list-style:none;font-size:.9rem;color:var(--muted)}
+nav ul a:hover{color:var(--teal)}
+.hero{padding:110px 0 80px;background:radial-gradient(ellipse at 75% 0%,rgba(20,212,196,.16),transparent 55%)}
+.eyebrow{color:var(--teal);letter-spacing:.2em;font-size:.8rem;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.08;max-width:14ch}
+h1 em{font-style:normal;color:var(--teal)}
+.hero p{color:var(--muted);max-width:56ch;margin:24px 0 32px;font-size:1.1rem}
+.btn{display:inline-block;padding:13px 26px;border-radius:6px;font-weight:600;font-size:.95rem;border:1px solid var(--teal);transition:.2s}
+.btn.solid{background:var(--teal);color:#05201e}
+.btn.solid:hover{background:#3ee6d8}
+.btn.ghost{color:var(--teal);margin-left:10px}
+.btn.ghost:hover{background:rgba(20,212,196,.1)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:64px}
+.stat{border-left:2px solid var(--teal);padding-left:16px}
+.stat b{display:block;font-size:1.8rem}
+.stat span{color:var(--muted);font-size:.85rem}
+section{padding:80px 0}
+h2{font-size:1.9rem;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:.25s;text-align:left;color:inherit;font:inherit;width:100%}
+.card:hover,.card:focus-visible{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 10px 30px rgba(20,212,196,.12);outline:none}
+.thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#102127,#0b1316);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play i{width:56px;height:56px;border-radius:50%;background:rgba(11,15,18,.7);border:2px solid var(--teal);display:grid;place-items:center;transition:.2s}
+.play i::after{content:"";border-left:16px solid var(--teal);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.card:hover .play i{background:var(--teal)}
+.card:hover .play i::after{border-left-color:#05201e}
+.info{padding:18px 20px 22px}
+.tag{color:var(--teal);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+.info h3{margin:4px 0 6px;font-size:1.1rem}
+.info p{color:var(--muted);font-size:.92rem}
+.tools{margin-top:10px;font-size:.78rem;color:var(--teal-dim)}
+.split{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+.split p{color:var(--muted);margin-bottom:16px}
+.skills{display:grid;gap:18px}
+.skills h4{color:var(--teal);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.skills p{margin:0;color:var(--text);font-size:.95rem}
+.exp{display:grid;gap:0;border-top:1px solid var(--line)}
+.exp div{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.exp small{color:var(--muted)}
+.exp b{display:block}
+.exp span{color:var(--muted);font-size:.93rem}
+.contact{text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(20,212,196,.14),transparent 60%)}
+.contact h2{font-size:2.4rem}
+.contact p{color:var(--muted);margin:10px 0 28px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center}
+.modal{position:fixed;inset:0;background:rgba(3,6,8,.92);display:none;place-items:center;z-index:50;padding:24px}
+.modal.open{display:grid}
+.modal-inner{width:min(1000px,100%)}
+.frame{aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
+.frame iframe{width:100%;height:100%;border:0}
+.cap{margin-top:14px}
+.cap b{display:block}
+.cap span{color:var(--muted);font-size:.92rem}
+.close{position:absolute;top:18px;right:24px;background:none;border:0;color:var(--text);font-size:2.2rem;cursor:pointer}
+.close:hover{color:var(--teal)}
+@media(max-width:760px){.split{grid-template-columns:1fr;gap:36px}.exp div{grid-template-columns:1fr;gap:4px}nav ul{gap:14px}.btn.ghost{margin:10px 0 0}.hero{padding-top:70px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#top" class="logo">WESLEY <span>BOWEN</span></a>
+  <ul><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">Video Producer &middot; Cinematographer &middot; Colorist</div>
+  <h1>Stories that look <em>as good</em> as they sound.</h1>
+  <p>I produce, shoot and finish video for brands, educators and organizations. Ten-plus years of managing crews, clients and deadlines without losing the craft.</p>
+  <a class="btn solid" href="#work">Watch my work</a>
+  <a class="btn ghost" href="#contact">Get in touch</a>
+  <div class="stats">
+    <div class="stat"><b>10+</b><span>years producing video</span></div>
+    <div class="stat"><b>1,000+</b><span>freelance productions</span></div>
+    <div class="stat"><b>400+</b><span>videos a month at Social Paragon</span></div>
+    <div class="stat"><b>100+ TB</b><span>media managed</span></div>
+  </div>
+</div></header>
+
+<section id="work"><div class="wrap">
+  <h2>Selected Work</h2>
+  <p class="sub">Click any project to watch it right here.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="about" style="background:var(--surface)"><div class="wrap">
+  <div class="split">
+    <div>
+      <h2>About</h2>
+      <p class="sub">Director of Production at Social Paragon, Lehi, UT</p>
+      <p>I'm the person who can run the whole production: concepting with clients, writing and planning, directing and shooting on set, then coordinating editors and finishing the color and sound. I'm equally comfortable leading a crew or working independently and remotely.</p>
+      <p>My start was in sports and broadcast at BYU, where I worked on Studio C and Sports Nation shoots and the Hole in the Rock documentary. Since then I've built production workflows, trained teams, and delivered video across commercial, educational and corporate spaces.</p>
+      <p>I also hold an FAA Part 107 drone license and speak Spanish.</p>
+    </div>
+    <div class="skills">
+      <div><h4>Produce &amp; Direct</h4><p>Concepting, scripts, storyboards, scheduling, crew and client coordination</p></div>
+      <div><h4>Shoot</h4><p>Cinema and mirrorless cameras, gimbals, three-point lighting, interview and lavalier audio</p></div>
+      <div><h4>Finish</h4><p>DaVinci Resolve, Premiere Pro, color grading, audio mixing, After Effects motion graphics</p></div>
+      <div><h4>Operations</h4><p>Asset management, backup workflows, team training</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Experience</h2>
+  <p class="sub">The short version.</p>
+  <div class="exp">
+    <div><small>2019 &ndash; Present</small><p><b>Director of Production</b><span>Social Paragon, Lehi UT. Led crews, produced and edited hundreds of marketing, educational and commercial videos monthly.</span></p></div>
+    <div><small>2015 &ndash; Present</small><p><b>Freelance Cinematographer</b><span>Salt Lake City. Interviews, promos, educational and branded storytelling from concept to delivery.</span></p></div>
+    <div><small>2016 &ndash; 2017</small><p><b>Director of Photography</b><span>BYU Broadcasting. Lit and shot for Sports Nation, Studio C and the BYU Store.</span></p></div>
+    <div><small>2013 &ndash; 2016</small><p><b>Student Video Coordinator</b><span>BYU Men's Basketball. Recruiting, analysis and promo video with rapid turnarounds.</span></p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's make something.</h2>
+  <p>Open to production, cinematography and video leadership roles.</p>
+  <a class="btn solid" href="mailto:wes.c.bowen@gmail.com">wes.c.bowen@gmail.com</a>
+  <a class="btn ghost" href="https://www.youtube.com/channel/UC_jDmuu2SITD12vC3UwtFyg/playlists" target="_blank" rel="noopener">YouTube Channel</a>
+</div></section>
+
+<footer>&copy; <span id="yr"></span> Wesley Bowen</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="close" id="close" aria-label="Close">&times;</button>
+  <div class="modal-inner">
+    <div class="frame" id="frame"></div>
+    <div class="cap"><b id="cTitle"></b><span id="cDesc"></span></div>
+  </div>
+</div>
+
+<script>
+/* ===== EDIT THIS LIST =====
+   id: the part of the YouTube link after v= (or after youtu.be/)
+   Unlisted videos work fine. Leave id as "" to show a placeholder tile. */
+const PROJECTS = [
+  {id:"", tag:"Showreel", title:"2026 Showreel", desc:"A quick tour of my best shots, edits and color work.", tools:"DaVinci Resolve · Premiere Pro"},
+  {id:"", tag:"Commercial", title:"Project Title Here", desc:"One line on the client, your role (director, DP, editor) and the result.", tools:"DaVinci Resolve · After Effects"},
+  {id:"", tag:"Interview", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Cinema camera · Lavalier audio"},
+  {id:"", tag:"Educational", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Premiere Pro · Motion graphics"},
+  {id:"", tag:"Corporate", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Directed · Shot · Edited"},
+  {id:"", tag:"Branded Story", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Color grade · Sound mix"}
+];
+
+const grid = document.getElementById("grid");
+PROJECTS.forEach((p, i) => {
+  const b = document.createElement("button");
+  b.className = "card";
+  const thumb = p.id ? `<img loading="lazy" src="https://i.ytimg.com/vi/${p.id}/hqdefault.jpg" alt="">` : "";
+  b.innerHTML = `<div class="thumb">${thumb}<div class="play"><i></i></div></div>
+    <div class="info"><div class="tag">${p.tag}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="tools">${p.tools}</div></div>`;
+  b.addEventListener("click", () => openVideo(i));
+  grid.appendChild(b);
+});
+
+const modal = document.getElementById("modal"), frame = document.getElementById("frame");
+function openVideo(i){
+  const p = PROJECTS[i];
+  document.getElementById("cTitle").textContent = p.title;
+  document.getElementById("cDesc").textContent = p.desc;
+  frame.innerHTML = p.id
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${p.id}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+    : `<div style="height:100%;display:grid;place-items:center;color:#9bb0b8;text-align:center;padding:20px">Add a YouTube video ID for this project in the PROJECTS list.</div>`;
+  modal.classList.add("open");
+}
+function closeVideo(){ modal.classList.remove("open"); frame.innerHTML = ""; }
+document.getElementById("close").addEventListener("click", closeVideo);
+modal.addEventListener("click", e => { if(e.target === modal) closeVideo(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeVideo(); });
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
