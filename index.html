@@ -96,6 +96,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 .close:hover{color:var(--teal)}
 @media(max-width:980px){.track .card{flex-basis:calc((100% - 20px)/2)}.track.vert .card{flex-basis:calc((100% - 40px)/3)}}
 @media(max-width:760px){.track .card{flex-basis:80%}.track.vert .card{flex-basis:46%}.arrows{display:none}.split{grid-template-columns:1fr;gap:36px}.exp div{grid-template-columns:1fr;gap:4px}nav ul{gap:14px}.btn.ghost{margin:10px 0 0}.hero{padding-top:70px}}
+.portrait{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:10px;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(20,212,196,.25),0 12px 40px rgba(20,212,196,.12);margin-bottom:6px}
+@media(max-width:760px){.portrait{max-width:340px}}
 </style>
 </head>
 <body>
@@ -135,6 +137,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <p>I also hold an FAA Part 107 drone license and speak Spanish.</p>
     </div>
     <div class="skills">
+      <img class="portrait" src="wesley.jpg" alt="Wesley Bowen behind the camera" loading="lazy">
       <div><h4>Produce &amp; Direct</h4><p>Concepting, scripts, storyboards, scheduling, crew and client coordination</p></div>
       <div><h4>Shoot</h4><p>Cinema and mirrorless cameras, gimbals, three-point lighting, interview and lavalier audio</p></div>
       <div><h4>Finish</h4><p>DaVinci Resolve, Premiere Pro, color grading, audio mixing, After Effects motion graphics</p></div>
@@ -211,7 +214,7 @@ const SECTIONS = [
     V("https://youtu.be/G-wJpdyJ5Lg","Beautifully Unrecognizable Remodel | Bright Homes","Interviewer, Cinematographer, Colorist, VFX Artist"),
     V("https://youtu.be/gYnU2WoVvcU","Cara Loren Testimonial | Alice Lane","Director, Cinematographer, Colorist, Editor"),
     V("https://youtu.be/62vMrF1GP-w","Tooele Fire Station | Garage Kings","Interviewer, Cinematographer")]},
-  {key:"aboutus", title:"About Us Videos", sub:"Brand and company stories that introduce who a business is.", vertical:false, alt:false, videos:[
+  {key:"companystories", title:"Company Stories", sub:"Brand and company stories that introduce who a business is.", vertical:false, alt:false, videos:[
     V("https://youtu.be/PgtR9gY8g4Q","Becoming President | Universal Accounting Center","Cinematographer, Colorist"),
     V("https://youtu.be/iDokfoBOrss","Welcome to CMA | Championship Martial Arts","Interviewer, Cinematographer, Colorist"),
     V("https://youtu.be/ahqlvA55oNY","Overview | Border and Square","Interviewer, Cinematographer, Colorist"),
