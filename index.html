@@ -18,7 +18,10 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:6
 .logo span{color:var(--teal)}
 nav ul{display:flex;gap:24px;list-style:none;font-size:.9rem;color:var(--muted)}
 nav ul a:hover{color:var(--teal)}
-.hero{padding:110px 0 80px;background:radial-gradient(ellipse at 75% 0%,rgba(20,212,196,.16),transparent 55%)}
+.hero{position:relative;padding:130px 0 90px;overflow:hidden;background:radial-gradient(ellipse at 75% 0%,rgba(20,212,196,.16),transparent 55%),#0b0f12}
+.hero .wrap{position:relative;z-index:2}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.55}
+.shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,15,18,.88) 0%,rgba(11,15,18,.55) 55%,rgba(11,15,18,.8) 100%),linear-gradient(180deg,transparent 60%,#0b0f12 100%)}
 .eyebrow{color:var(--teal);letter-spacing:.2em;font-size:.8rem;text-transform:uppercase;margin-bottom:18px}
 h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.08;max-width:14ch}
 h1 em{font-style:normal;color:var(--teal)}
@@ -32,10 +35,22 @@ h1 em{font-style:normal;color:var(--teal)}
 .stat{border-left:2px solid var(--teal);padding-left:16px}
 .stat b{display:block;font-size:1.8rem}
 .stat span{color:var(--muted);font-size:.85rem}
-section{padding:80px 0}
+section{padding:70px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px}
+.sec-head .sub{margin:0}
 h2{font-size:1.9rem;margin-bottom:8px}
 .sub{color:var(--muted);margin-bottom:36px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.arrows{display:flex;gap:8px;flex-shrink:0}
+.arrows button{width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--text);font-size:1.2rem;cursor:pointer;transition:.2s}
+.arrows button:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+.arrows button:disabled{opacity:.25;cursor:default}
+.track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 18px;scrollbar-width:thin;scrollbar-color:var(--teal-dim) transparent}
+.track::-webkit-scrollbar{height:6px}
+.track::-webkit-scrollbar-thumb{background:var(--teal-dim);border-radius:3px}
+.track .card{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start}
+.track.vert .card{flex:0 0 calc((100% - 80px)/5)}
+.track.vert .thumb{aspect-ratio:9/16}
+.alt{background:var(--surface)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:.25s;text-align:left;color:inherit;font:inherit;width:100%}
 .card:hover,.card:focus-visible{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 10px 30px rgba(20,212,196,.12);outline:none}
 .thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#102127,#0b1316);overflow:hidden}
@@ -49,7 +64,7 @@ h2{font-size:1.9rem;margin-bottom:8px}
 .tag{color:var(--teal);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
 .info h3{margin:4px 0 6px;font-size:1.1rem}
 .info p{color:var(--muted);font-size:.92rem}
-.tools{margin-top:10px;font-size:.78rem;color:var(--teal-dim)}
+.tools{margin-top:8px;font-size:.78rem;color:var(--teal-dim)}
 .split{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
 .split p{color:var(--muted);margin-bottom:16px}
 .skills{display:grid;gap:18px}
@@ -63,10 +78,15 @@ h2{font-size:1.9rem;margin-bottom:8px}
 .contact{text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(20,212,196,.14),transparent 60%)}
 .contact h2{font-size:2.4rem}
 .contact p{color:var(--muted);margin:10px 0 28px}
+.social{display:flex;justify-content:center;gap:28px;margin-bottom:14px}
+.social a{color:var(--text);letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+.social a:hover{color:var(--teal)}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center}
 .modal{position:fixed;inset:0;background:rgba(3,6,8,.92);display:none;place-items:center;z-index:50;padding:24px}
 .modal.open{display:grid}
 .modal-inner{width:min(1000px,100%)}
+.frame.v{aspect-ratio:9/16;max-height:76vh;margin:0 auto}
+.modal-inner.v{width:min(420px,100%)}
 .frame{aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
 .frame iframe{width:100%;height:100%;border:0}
 .cap{margin-top:14px}
@@ -74,7 +94,8 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 .cap span{color:var(--muted);font-size:.92rem}
 .close{position:absolute;top:18px;right:24px;background:none;border:0;color:var(--text);font-size:2.2rem;cursor:pointer}
 .close:hover{color:var(--teal)}
-@media(max-width:760px){.split{grid-template-columns:1fr;gap:36px}.exp div{grid-template-columns:1fr;gap:4px}nav ul{gap:14px}.btn.ghost{margin:10px 0 0}.hero{padding-top:70px}}
+@media(max-width:980px){.track .card{flex-basis:calc((100% - 20px)/2)}.track.vert .card{flex-basis:calc((100% - 40px)/3)}}
+@media(max-width:760px){.track .card{flex-basis:80%}.track.vert .card{flex-basis:46%}.arrows{display:none}.split{grid-template-columns:1fr;gap:36px}.exp div{grid-template-columns:1fr;gap:4px}nav ul{gap:14px}.btn.ghost{margin:10px 0 0}.hero{padding-top:70px}}
 </style>
 </head>
 <body>
@@ -84,7 +105,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <ul><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
 </div></nav>
 
-<header class="hero" id="top"><div class="wrap">
+<header class="hero" id="top">
+  <!-- Looping banner: put banner.mp4 (10-15s, muted, ~1080p) in the same folder as this file -->
+  <video class="bg" id="bgvid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="banner.mp4" type="video/mp4"></video>
+  <div class="shade"></div>
+  <div class="wrap">
   <div class="eyebrow">Video Producer &middot; Cinematographer &middot; Colorist</div>
   <h1>Stories that look <em>as good</em> as they sound.</h1>
   <p>I produce, shoot and finish video for brands, educators and organizations. Ten-plus years of managing crews, clients and deadlines without losing the craft.</p>
@@ -98,11 +123,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   </div>
 </div></header>
 
-<section id="work"><div class="wrap">
-  <h2>Selected Work</h2>
-  <p class="sub">Click any project to watch it right here.</p>
-  <div class="grid" id="grid"></div>
-</div></section>
+<div id="sections"></div>
 
 <section id="about" style="background:var(--surface)"><div class="wrap">
   <div class="split">
@@ -137,51 +158,123 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <h2>Let's make something.</h2>
   <p>Open to production, cinematography and video leadership roles.</p>
   <a class="btn solid" href="mailto:wes.c.bowen@gmail.com">wes.c.bowen@gmail.com</a>
-  <a class="btn ghost" href="https://www.youtube.com/channel/UC_jDmuu2SITD12vC3UwtFyg/playlists" target="_blank" rel="noopener">YouTube Channel</a>
+  <a class="btn ghost" href="https://www.youtube.com/@wesleybowen7029/playlists" target="_blank" rel="noopener">YouTube Channel</a>
 </div></section>
 
-<footer>&copy; <span id="yr"></span> Wesley Bowen</footer>
+<footer><div class="wrap">
+  <div class="social"><a href="https://www.youtube.com/@wesleybowen7029/playlists" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/wesleycbowen/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:wes.c.bowen@gmail.com">Email</a></div>
+  &copy; <span id="yr"></span> Wesley Bowen
+</div></footer>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player">
   <button class="close" id="close" aria-label="Close">&times;</button>
-  <div class="modal-inner">
+  <div class="modal-inner" id="inner">
     <div class="frame" id="frame"></div>
-    <div class="cap"><b id="cTitle"></b><span id="cDesc"></span></div>
+    <div class="cap"><b id="cTitle"></b><span id="cDesc"></span><a id="cYt" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;color:var(--teal);font-size:.88rem">Not playing? Watch on YouTube &rarr;</a></div>
   </div>
 </div>
 
 <script>
 /* ===== EDIT THIS LIST =====
-   id: the part of the YouTube link after v= (or after youtu.be/)
-   Unlisted videos work fine. Leave id as "" to show a placeholder tile. */
-const PROJECTS = [
-  {id:"", tag:"Showreel", title:"2026 Showreel", desc:"A quick tour of my best shots, edits and color work.", tools:"DaVinci Resolve · Premiere Pro"},
-  {id:"", tag:"Commercial", title:"Project Title Here", desc:"One line on the client, your role (director, DP, editor) and the result.", tools:"DaVinci Resolve · After Effects"},
-  {id:"", tag:"Interview", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Cinema camera · Lavalier audio"},
-  {id:"", tag:"Educational", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Premiere Pro · Motion graphics"},
-  {id:"", tag:"Corporate", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Directed · Shot · Edited"},
-  {id:"", tag:"Branded Story", title:"Project Title Here", desc:"One line on the client, your role and the result.", tools:"Color grade · Sound mix"}
+   V("YouTube link", "Project | Client", "Role, Role")  -- one line per video.
+   Use "" for the link to show a placeholder tile. Optional 4th argument: "thumbnail.jpg" for a custom thumbnail. */
+const V = (url, name, roles, thumb) => {
+  const m = url.match(/(?:youtu\.be\/|shorts\/|v=)([\w-]{11})/);
+  const [title, client] = name.split(" | ");
+  return {id: m ? m[1] : "", shorts: url.includes("/shorts/"), tag: client || "", title, tools: roles.split(", ").join(" · "), thumb};
+};
+
+const SECTIONS = [
+  {key:"work", title:"Selected Work", sub:"My favorites. Click any project to watch it right here.", vertical:false, alt:false, videos:[
+    V("https://youtu.be/G-wJpdyJ5Lg","Beautifully Unrecognizable Remodel | Bright Homes","Interviewer, Cinematographer, Colorist, VFX Artist"),
+    V("https://youtu.be/o_3hR4Ze3As","Scanz Pitch","Producer, Writer, Director, Cinematographer, Colorist, Editor, VFX Artist"),
+    V("https://youtu.be/OimeOOE9mB4","Roof Profile | Bartile Roofs","Drone Pilot, Editor, VFX Artist"),
+    V("https://youtu.be/OfD01dZZT84","Bench Vs Bucket Seats | Ekins Garage","Director, Cinematographer, Colorist"),
+    V("https://youtu.be/CCwj68kvn7Y","Product Banner","Cinematographer, Colorist")]},
+  {key:"ads", title:"Ads", sub:"Commercials for brands across retail, home and travel.", vertical:false, alt:true, videos:[
+    V("https://youtu.be/DNkDZJ1kuAA","Back to School | Kid 2 Kid","Director of Photography"),
+    V("https://youtu.be/iWrEBVbITB4","Fanny Pack | Ayla & Co","Director, Cinematographer, Colorist"),
+    V("https://youtu.be/szqT2Km1K3Q","The Hidden Gas Door | Ekins Garage","Director, Cinematographer, Colorist"),
+    V("https://youtu.be/AMvNIdq1sKc","This is Tuyhaye | Everblade","Cinematographer, Drone Pilot, Colorist"),
+    V("https://youtu.be/uGNCEJpQWP4","Guest Journey | Liv A Way Suites","Cinematographer, Drone Pilot, Colorist")]},
+  {key:"social", title:"Social Posts", sub:"Vertical video built for the scroll.", vertical:true, alt:false, videos:[
+    V("https://youtube.com/shorts/UzzU2muBy00","3 Things to not Skimp out on in your Custom Build | Ekins Garage","Director, Cinematographer, Colorist, Editor"),
+    V("https://youtube.com/shorts/CrHuxmvgDys","Marble | Alice Lane","Cinematographer, Colorist"),
+    V("https://youtube.com/shorts/vb4TxYCx3ho","Roof Profile | Bartile Roofs","Drone Pilot, Editor, VFX Artist"),
+    V("https://youtube.com/shorts/BtKLrEaOwgE","Don't Buy The Bankers Boat | Cinch Homes","Cinematographer, Colorist"),
+    V("https://youtube.com/shorts/yqk6I0CRlOY","Unique Turf Designs | Everblade","Director, Cinematographer, Drone Pilot, Colorist"),
+    V("https://youtube.com/shorts/5011p-AfDJQ","Sleek and Spacious | Six 21 Laptop Bag","Cinematographer"),
+    V("https://youtube.com/shorts/bXOPfAjGvvY","Lawyers not Liars | ReshLaw","Cinematographer, Colorist"),
+    V("https://youtu.be/sd19WWxwJNs","Bailey | Home Furnishing Design","Interviewer, Cinematographer, Colorist")]},
+  {key:"testimonials", title:"Testimonials", sub:"Client testimonials I've filmed, lit and graded.", vertical:false, alt:true, videos:[
+    V("https://youtu.be/Tu73-cC54_A","Parade of Homes Testimonial | Artisan Roofscapes","Interviewer, Cinematographer, Drone Pilot, Colorist"),
+    V("https://youtu.be/G-wJpdyJ5Lg","Beautifully Unrecognizable Remodel | Bright Homes","Interviewer, Cinematographer, Colorist, VFX Artist"),
+    V("https://youtu.be/gYnU2WoVvcU","Cara Loren Testimonial","Director, Cinematographer, Colorist, Editor"),
+    V("https://youtu.be/62vMrF1GP-w","Tooele Fire Station | Garage Kings","Interviewer, Cinematographer")]},
+  {key:"aboutus", title:"About Us Videos", sub:"Brand and company stories that introduce who a business is.", vertical:false, alt:false, videos:[
+    V("https://youtu.be/PgtR9gY8g4Q","Becoming President | Universal Accounting Center","Cinematographer, Colorist"),
+    V("https://youtu.be/iDokfoBOrss","Welcome to Championship Martial Arts","Interviewer, Cinematographer, Colorist"),
+    V("","Overview | Border and Square","Interviewer, Cinematographer, Colorist"),
+    V("https://youtu.be/SeKNt51XCKY","How to Play | Labyrinth","Cinematographer, Editor, VFX Artist"),
+    V("https://youtu.be/pHrvWx1fTtg","Project Services | CR-T","Cinematographer, Colorist, Editor")]},
+  {key:"edited", title:"Edited By Me", sub:"Footage I cut, graded and finished.", vertical:false, alt:true, videos:[
+    V("https://youtu.be/u8FV2rsH4_Y","Editing Showcase","Editor"),
+    V("https://youtu.be/okD45pKp8qI","Fall in Clear Creek County","Editor, Colorist"),
+    V("https://youtu.be/2JGaPge4FPM","Faction Party | Boone Mountain Sports","Editor"),
+    V("https://youtu.be/SeKNt51XCKY","How to Play | Labyrinth","Cinematographer, Editor, VFX Artist"),
+    V("https://youtube.com/shorts/UzzU2muBy00","3 Things to not Skimp out on in your Custom Build | Ekins Garage","Director, Cinematographer, Colorist, Editor"),
+    V("https://youtu.be/Ay8kFjP0gkw","What's in the Box | Social Paragon","Director, Cinematographer, Colorist, Editor"),
+    V("https://youtu.be/ftk8FwnXPNo","Refinance Your Home | Security National","Cinematographer, Colorist, Editor"),
+    V("https://youtu.be/B7ZbPkd4W4c","New Walmart | Calabash, NC","Editor"),
+    V("https://youtu.be/mt11_WEA3b4","Derek Power | Exit Realty Success","Interviewer, Cinematographer, Drone Pilot")]},
+  {key:"drone", title:"Drone Work", sub:"FAA Part 107 licensed aerial cinematography.", vertical:false, alt:false, videos:[
+    V("https://youtu.be/OimeOOE9mB4","Roof Profile | Bartile Roofs","Drone Pilot, Editor, VFX Artist"),
+    V("https://youtu.be/pLqSp3br880","Mountain View Cemetery Tour | Memorial Mortuaries & Cemeteries","Drone Pilot, Cinematographer, Colorist"),
+    V("https://youtu.be/Tu73-cC54_A","Parade of Homes Testimonial | Artisan Roofscapes","Interviewer, Cinematographer, Drone Pilot, Colorist"),
+    V("https://youtu.be/88Zv9_6Vf80","Donut Falls in the Snow","Drone Pilot, Editor")]}
 ];
 
-const grid = document.getElementById("grid");
-PROJECTS.forEach((p, i) => {
-  const b = document.createElement("button");
-  b.className = "card";
-  const thumb = p.id ? `<img loading="lazy" src="https://i.ytimg.com/vi/${p.id}/hqdefault.jpg" alt="">` : "";
-  b.innerHTML = `<div class="thumb">${thumb}<div class="play"><i></i></div></div>
-    <div class="info"><div class="tag">${p.tag}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="tools">${p.tools}</div></div>`;
-  b.addEventListener("click", () => openVideo(i));
-  grid.appendChild(b);
+const root = document.getElementById("sections");
+const ALL = [];
+SECTIONS.forEach(sec => {
+  const el = document.createElement("section");
+  el.id = sec.key; if (sec.alt) el.className = "alt";
+  el.innerHTML = `<div class="wrap">
+    <div class="sec-head"><div><h2>${sec.title}</h2><p class="sub">${sec.sub}</p></div>
+    <div class="arrows"><button aria-label="Previous">&#8249;</button><button aria-label="Next">&#8250;</button></div></div>
+    <div class="track ${sec.vertical ? "vert" : ""}"></div></div>`;
+  root.appendChild(el);
+  const track = el.querySelector(".track"), [prev, next] = el.querySelectorAll(".arrows button");
+  sec.videos.forEach(p => {
+    p.vertical = sec.vertical;
+    const i = ALL.push(p) - 1;
+    const b = document.createElement("button");
+    b.className = "card";
+    const src = p.thumb || (p.id ? `https://i.ytimg.com/vi/${p.id}/hqdefault.jpg` : "");
+    b.innerHTML = `<div class="thumb">${src ? `<img loading="lazy" src="${src}" alt="">` : ""}<div class="play"><i></i></div></div>
+      <div class="info">${p.tag ? `<div class="tag">${p.tag}</div>` : ""}<h3>${p.title}</h3><div class="tools">${p.tools}</div></div>`;
+    b.addEventListener("click", () => openVideo(i));
+    track.appendChild(b);
+  });
+  const step = () => track.clientWidth * 0.9;
+  const sync = () => { prev.disabled = track.scrollLeft < 4; next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; };
+  prev.onclick = () => track.scrollBy({left:-step()});
+  next.onclick = () => track.scrollBy({left:step()});
+  track.addEventListener("scroll", sync, {passive:true}); window.addEventListener("resize", sync); sync();
 });
 
-const modal = document.getElementById("modal"), frame = document.getElementById("frame");
+const modal = document.getElementById("modal"), frame = document.getElementById("frame"), inner = document.getElementById("inner");
 function openVideo(i){
-  const p = PROJECTS[i];
+  const p = ALL[i], vert = p.vertical || p.shorts;
   document.getElementById("cTitle").textContent = p.title;
-  document.getElementById("cDesc").textContent = p.desc;
+  document.getElementById("cDesc").textContent = (p.tag ? p.tag + " — " : "") + p.tools;
+  document.getElementById("cYt").href = "https://www.youtube.com/watch?v=" + p.id;
+  document.getElementById("cYt").style.display = p.id ? "inline-block" : "none";
+  inner.className = "modal-inner" + (vert ? " v" : "");
+  frame.className = "frame" + (vert ? " v" : "");
   frame.innerHTML = p.id
-    ? `<iframe src="https://www.youtube-nocookie.com/embed/${p.id}?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
-    : `<div style="height:100%;display:grid;place-items:center;color:#9bb0b8;text-align:center;padding:20px">Add a YouTube video ID for this project in the PROJECTS list.</div>`;
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${p.id}?autoplay=1&rel=0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+    : `<div style="height:100%;display:grid;place-items:center;color:#9bb0b8;text-align:center;padding:20px">Add a YouTube video ID for this project in the SECTIONS list.</div>`;
   modal.classList.add("open");
 }
 function closeVideo(){ modal.classList.remove("open"); frame.innerHTML = ""; }
@@ -189,6 +282,9 @@ document.getElementById("close").addEventListener("click", closeVideo);
 modal.addEventListener("click", e => { if(e.target === modal) closeVideo(); });
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeVideo(); });
 document.getElementById("yr").textContent = new Date().getFullYear();
+
+const bg = document.getElementById("bgvid");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) bg.removeAttribute("autoplay"), bg.pause();
 </script>
 </body>
 </html>
